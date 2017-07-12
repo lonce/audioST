@@ -54,8 +54,10 @@ This notebook also includes code for generating a label file (text file with lis
 
 +++++++++++++++
 
-Note: You can test and explore this model with a tiny subset of the ESC-50 sounds provided with the git repository. 
-./data2 contains dog and vird sounds, already converted from sounds -> to spectorgrams -> separated into train/ and test/ folders. All you need to do is 
-a) navigate to the data2 directory and run the runcmd to convert the data to TFRecords (or runcmd.2label.txt to include secondary labels for MTL), and then 
-b) go to the main project folder and run 
-   prompt> python DCNSoundClass.py
+Note: You can test and explore this model with a tiny (2-class) subset of the ESC-50 sounds provided with the git repository. 
+./data2 (linear frequency scale) and data2Q (constant-Q freq scale) contains dog and bird sounds, already converted from sounds -> to spectorgrams -> separated into train/ and test/ folders. All you need to do run step 
+
+a) do step 4(c) above in the data2 or dataQ directories
+	Note that data2 file names embed secondary labels, so you can run MTL during training on them if you create the TFR records with the spect2TFRecords.2label.sh script.
+
+b) go to the main project folder and run a runscript such as run2.sh 
