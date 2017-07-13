@@ -1,6 +1,6 @@
 #!/bin/bash                                                                                                                                                                
 # To store logs and see both stderr and stdout on the screen:  
-#    nohup ./run2.sh >>logs/multilog.txt 2>&1 &     
+#    nohup ./run2.sh logs >>logs/multilog.txt 2>&1 &     
 # Individual logs will also still get stored in their respective directories                                                                                                            
 source activate tflow2
 DATE=`date +%Y.%m.%d`
@@ -20,20 +20,22 @@ numconvlayers=2
 learningrate=.01
 optimizer=adam
 
-orientationArray=(height) #(height)
+orientationArray=(height channels) #(height)
 epsilon=1.0
 
-bnArray=(0 1)
+bnArray=(0)
 mtl=0
-indir=data2
+indirArray=(data2 data2Q)
 
 for  bn in ${bnArray[@]}
 do
     for orientation in ${orientationArray[@]}
     do
+        for indir in ${indirArray}
+        do
             #make output dir for paramter settings                                                                                                                         
             echo " -------       new batch run     --------"
-            OUTDIR="$maindir/mtl_${mtl}.or_${orientation}.bn_${bn}"
+            OUTDIR="$maindir/d_${indir}.or_${orientation}.bn_${bn}"
             mkdir $OUTDIR
             echo "outdir is " $OUTDIR
 
@@ -48,6 +50,7 @@ do
             runcmd+=' --adamepsilon ${epsilon} --optimizer ${optimizer} --numconvlayers ${numconvlayers} --mtlnumclasses ${mtl}'
 			# direct stdout and sterr from each run into their proper directories, but tww so we can still watch
         	eval $runcmd > >(tee $OUTDIR/log.txt) 2> >(tee $OUTDIR.stderr.log >&2)
+        done
     done
 done
 

@@ -3,12 +3,12 @@
 """
 import tensorflow as tf
 import numpy as np
-import spectreader
+import utils.spectreader as spectreader
 import os
 import time
 import math
 
-import pickledModel
+import utils.pickledModel as pickledModel
 
 # get args from command line
 import argparse

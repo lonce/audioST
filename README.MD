@@ -46,7 +46,8 @@ This notebook also includes code for generating a label file (text file with lis
 4) The final step is to turn these data into TFRecord files to be read by the tensorflow training code.
 	a) move the label file from the ./data/esc50spect directory to the ./data directory
 	b) change directory so that you are in your ./data directory
-	c) execute spect2TFRecords.sh  (or spect2TFRecords.2label.sh to include secondary labels for MTL)
+	c) execute 
+		spect2TFRecords.sh  (or spect2TFRecords.2label.sh to include secondary labels for MTL)
 		These commands are in the the /scripts subdirectory of the project - I suggest adding the path to your $PATH environment variable to run them from anywhere)
 	
 
