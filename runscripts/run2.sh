@@ -31,7 +31,7 @@ for  bn in ${bnArray[@]}
 do
     for orientation in ${orientationArray[@]}
     do
-        for indir in ${indirArray}
+        for indir in ${indirArray[@]}
         do
             #make output dir for paramter settings                                                                                                                         
             echo " -------       new batch run     --------"
