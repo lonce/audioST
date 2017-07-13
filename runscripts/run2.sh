@@ -25,7 +25,7 @@ epsilon=1.0
 
 bnArray=(0)
 mtl=0
-indirArray=(data2 data2Q)
+indirArray=(data2)
 
 for  bn in ${bnArray[@]}
 do
